@@ -83,4 +83,4 @@ The project is including the scripts to compile the application with maven and t
     
 **To run the application in browser:**
 
-    http://host-ip/rainy-hills/
+    http://host-ip/rainy-hills/calculate
