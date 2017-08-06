@@ -30,7 +30,7 @@
                     </div>
                     <div style="height: 43px;">
                         <div class="input-group">
-                            <input type="text" name="inputValues" class="form-control" pattern="[0-9]+(\s[0-9]+)*" placeholder="Enter the profile of a surface separated by spaces, e.g: 3 2 4 1 2">
+                            <input type="text" name="inputValues" class="form-control" pattern="[0-9]+(\s[0-9]+)*" placeholder="Enter the profile of a surface separated by spaces, e.g: 3 2 4 1 2" required>
                             <span class="input-group-btn">
                                 <input type="submit" class="btn btn-default" value="Calculate!">
                             </span>
