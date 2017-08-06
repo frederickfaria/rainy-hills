@@ -6,6 +6,6 @@ cp ../../target/rainy-hills.war rainy-hills.war
 
 docker build -t frederickfaria/rainy-hills .
 
-#docker push frederickfaria/rainy-hills
+docker push frederickfaria/rainy-hills
 
 rm rainy-hills.war

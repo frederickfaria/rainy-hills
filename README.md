@@ -63,3 +63,24 @@ The solution was implemented with Java Platform Enterprise Edition (Java EE) API
 **Test:**
 
     CoreServiceTest.java: Unit test class for fillWater method of CoreServiceImpl.java.
+    
+# DEPLOYMENT:
+
+The project is including the scripts to compile the application with maven and docker image creation.
+
+**To compile and create the image:**
+
+    cd deployment/server/
+    ./dockerbuild.sh
+    
+**To run the docker container:**
+
+    docker run -it -d --name rainy-hills -p 80:8080 frederickfaria/rainy-hills
+    
+**To show the wildfly log:**
+
+    docker logs -f rainy-hills
+    
+**To run the application in browser:**
+
+    http://host-ip/rainy-hills/
