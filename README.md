@@ -42,15 +42,15 @@ Make a statement on complexity of your solution (time and memory), and if possib
 
 The solution was implemented with Java Platform Enterprise Edition (Java EE) APIs as showed bellow:
 
-**Controller:**
+**Servlet:**
 
     MainServlet.java: Main servlet that get the request of browser with the user input using method post.
 
-**Service:**                      
+**EJB Service:**                      
 
     CoreService.java: Local interface for the ejb who contains the code to solve the problem. 
 
-    CoreServiceImpl.java: EJB Stateless implementing CoreService as it local interface, overriding the method fillWater 
+    CoreServiceImpl.java: EJB Stateless implementing CoreService as it local interface, overriding the method fillWater .
 
 **Descriptor:**
 
@@ -58,8 +58,8 @@ The solution was implemented with Java Platform Enterprise Edition (Java EE) API
 
 **JSP:** 
 
-    index.jsp: JSP file who contains the content to show in the browser. Implements Bootstrap 3.3.7
+    index.jsp: JSP file who contains the content to show in the browser. Implements Bootstrap 3.3.7.
 
 **Test:**
 
-    CoreServiceTest.java: Unit test class for fillWater method of CoreServiceImpl.java
+    CoreServiceTest.java: Unit test class for fillWater method of CoreServiceImpl.java.
