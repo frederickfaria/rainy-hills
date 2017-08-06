@@ -1,6 +1,7 @@
 package com.crxmarkets.rainyhills.controller;
 
 import com.crxmarkets.rainyhills.service.CoreService;
+import org.apache.log4j.Logger;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -19,37 +20,47 @@ import java.util.Arrays;
 @WebServlet(urlPatterns = "/rainyHills")
 public class MainServlet extends HttpServlet {
 
+    static Logger logger = Logger.getLogger(MainServlet.class);
+
     @EJB
     private CoreService coreService;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String inputValues = req.getParameter("inputValues");
+        logger.info("From: " + req.getRemoteAddr() + ". Received request.");
 
-        int[] parsedValues = Arrays.stream(inputValues.split(" "))
-                .map(String::trim).mapToInt(Integer::parseInt).toArray();
+        try {
+            String inputValues = req.getParameter("inputValues");
 
-        if(parsedValues.length < 3){
-            req.setAttribute("error", "The values entered do not represents a valid surface, minimum input should be 1 0 1");
-            req.getRequestDispatcher("/index.jsp").forward(req, resp);
-        }
-        else {
-            int volume = coreService.fillWater(parsedValues);
+            int[] parsedValues = Arrays.stream(inputValues.split(" "))
+                    .map(String::trim).mapToInt(Integer::parseInt).toArray();
 
-            if(volume == 0){
-                req.setAttribute("error", "You entered surface without any hole, enter a new one keeping a hole");
+            logger.info("From: " + req.getRemoteAddr() + ". Input values: " + Arrays.toString(parsedValues));
+
+            if(parsedValues.length < 3){
+                logger.warn("From: " + req.getRemoteAddr() + ". The values entered do not represents a valid surface");
+                req.setAttribute("error", "The values entered do not represents a valid surface, minimum input should be 1 0 1");
                 req.getRequestDispatcher("/index.jsp").forward(req, resp);
             }
             else {
-                req.setAttribute("answer", "Volume = " + volume);
-                req.getRequestDispatcher("/index.jsp").forward(req, resp);
+                int volume = coreService.fillWater(parsedValues);
+
+                if(volume == 0){
+                    logger.warn("From: " + req.getRemoteAddr() + ". The surface do not contains any hole");
+                    req.setAttribute("error", "You entered surface without any hole, enter a new one keeping a hole");
+                    req.getRequestDispatcher("/index.jsp").forward(req, resp);
+                }
+                else {
+                    logger.info("From: " + req.getRemoteAddr() + ". Calculation successfully processed, answer: " + volume);
+                    req.setAttribute("answer", "Volume = " + volume);
+                    req.getRequestDispatcher("/index.jsp").forward(req, resp);
+                }
             }
+        } catch (Exception e) {
+            logger.error("From: " + req.getRemoteAddr() + ". An unhandled error occurred", e);
+            req.setAttribute("error", "An unhandled error occurred, please contact the administrator");
+            req.getRequestDispatcher("/index.jsp").forward(req, resp);
         }
     }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    }
-
 }
