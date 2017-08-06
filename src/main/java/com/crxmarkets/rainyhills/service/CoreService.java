@@ -9,5 +9,5 @@ import javax.ejb.Local;
  */
 @Local
 public interface CoreService {
-    int fillWater(int arr[]);
+    long fillWater(long[] arr);
 }
