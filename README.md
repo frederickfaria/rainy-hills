@@ -38,3 +38,30 @@ Write an application which takes an array as an input, and calculates the volume
 The application shall be deployable in a EJB container of your choice(preferably either JBoss, Wildfly, Glassfish, or TomEE).
 Make a statement on complexity of your solution (time and memory), and if possibly discuss complexity of an optimal solution.
 
+# SOLUTION:
+
+The solution was implemented with Java Platform Enterprise Edition (Java EE) APIs as showed bellow:
+
+├── pom.xml
+├── main
+│   ├── java
+│   │   └── com
+│   │       └── crxmarkets
+│   │           └── rainyhills
+│   │               ├── controller
+│   │               │   └── MainServlet.java ------> Main servlet that get the request of browser with the user input using method post.
+│   │               │                                The input of this request is processed by CoreService to get the answer to present it for the user.
+│   │               └── service                      
+│   │                   ├── CoreService.java ------> Local interface for the ejb who contains the code to solve the problem. 
+│   │                   └── CoreServiceImpl.java --> EJB Stateless implementing CoreService as it local interface, overriding the method fillWater 
+│   │                                                who contains the implementation that get the volume of water giving the surface.
+│   └── webapp
+│       ├── WEB-INF
+│       │   └── web.xml ---------------------------> Deployment Descriptor for the J2EE application. Contains the servlet and ejb definition.
+│       └── index.jsp -----------------------------> JSP file who contains the content to show in the browser. Implements Bootstrap 3.3.7
+└── test
+    └── java
+        └── com
+            └── crxmarkets
+                └── rainyhills
+                    └── CoreServiceTest.java ------> Unit test class for fillWater method of CoreServiceImpl.java
