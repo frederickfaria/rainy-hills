@@ -9,27 +9,39 @@ import javax.ejb.Stateless;
  */
 public class CoreImpl {
 
+    /**
+     * Calculates the volume of water which remained after the rain, in units.
+     *
+     * @param arr
+     *          describes profile of a surface
+     *
+     * @return
+     *      the volume of water in units which remained after the rain
+     *
+     * Time Complexity: O(n)
+     * Space Complexity : O(1)
+     */
     public int fillWater(int[] arr) {
 
         int volume = 0;
-        int leftMax = 0;
-        int rightMax = 0;
+        int left = 0;
+        int right = 0;
         int lo = 0;
         int hi = arr.length - 1;
 
         while (lo <= hi) {
             if (arr[lo] < arr[hi]) {
-                if (arr[lo] > leftMax) {
-                    leftMax = arr[lo];
+                if (arr[lo] > left) {
+                    left = arr[lo];
                 } else {
-                    volume += leftMax - arr[lo];
+                    volume += left - arr[lo];
                 }
                 lo++;
             } else {
-                if (arr[hi] > rightMax) {
-                    rightMax = arr[hi];
+                if (arr[hi] > right) {
+                    right = arr[hi];
                 } else {
-                    volume += rightMax - arr[hi];
+                    volume += right - arr[hi];
                 }
                 hi--;
             }
