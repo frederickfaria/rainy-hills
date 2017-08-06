@@ -23,11 +23,11 @@ public class CoreServiceImpl implements CoreService {
      * Space Complexity: O(1)
      */
     @Override
-    public int fillWater(int[] arr) {
+    public long fillWater(long[] arr) {
 
-        int volume = 0;
-        int left = 0;
-        int right = 0;
+        long volume = 0;
+        long left = 0;
+        long right = 0;
         int lo = 0;
         int hi = arr.length - 1;
 
@@ -36,19 +36,38 @@ public class CoreServiceImpl implements CoreService {
                 if (arr[lo] > left) {
                     left = arr[lo];
                 } else {
-                    volume += left - arr[lo];
+                    volume = checkSumLimit(volume, left - arr[lo]);
                 }
                 lo++;
             } else {
                 if (arr[hi] > right) {
                     right = arr[hi];
                 } else {
-                    volume += right - arr[hi];
+                    volume = checkSumLimit(volume, right - arr[hi]);
                 }
                 hi--;
             }
         }
 
         return volume;
+    }
+
+    /**
+     * Verifies that the sum of two longs do not exceeds Long.MAX_VALUE
+     *
+     * @param a
+     *          First number to sum
+     * @param b
+     *          Second number to sum
+     *
+     * @return
+     *          the sum of a + b if not exceeds the limit, otherwise throws ArithmeticException
+     */
+    public long checkSumLimit(long a, long b) {
+        long result = a + b;
+        if(!((a ^ b) < 0L | (a ^ result) >= 0L)) {
+            throw new ArithmeticException("The sum of " + a + " + " + b + " exceeds Long.MAX_VALUE");
+        }
+        return result;
     }
 }

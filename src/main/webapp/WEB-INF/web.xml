@@ -12,7 +12,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>MainServlet</servlet-name>
-        <url-pattern>/rainyHills</url-pattern>
+        <url-pattern>/calculate</url-pattern>
     </servlet-mapping>
     <ejb-local-ref>
         <ejb-ref-name>CoreService</ejb-ref-name>
