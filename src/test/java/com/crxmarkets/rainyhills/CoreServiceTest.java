@@ -1,6 +1,6 @@
 package com.crxmarkets.rainyhills;
 
-import com.crxmarkets.rainyhills.service.CoreImpl;
+import com.crxmarkets.rainyhills.service.CoreServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,11 +9,11 @@ import static org.junit.Assert.*;
 
 public class CoreServiceTest {
 
-    CoreImpl core;
+    CoreServiceImpl core;
 
     @Before
     public void setUp() throws Exception {
-        core = new CoreImpl();
+        core = new CoreServiceImpl();
     }
 
     @Test
