@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    <servlet>
+        <servlet-name>MainServlet</servlet-name>
+        <servlet-class>com.crxmarkets.rainyhills.controller.MainServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MainServlet</servlet-name>
+        <url-pattern>/rainyHills</url-pattern>
+    </servlet-mapping>
+    <ejb-local-ref>
+        <ejb-ref-name>CoreService</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>com.crxmarkets.rainyhills.service.CoreService</local>
+    </ejb-local-ref>
+</web-app>

@@ -7,7 +7,8 @@ import javax.ejb.Stateless;
  *
  * Created by ffaria on 5/8/17.
  */
-public class CoreImpl {
+@Stateless
+public class CoreServiceImpl implements CoreService {
 
     /**
      * Calculates the volume of water which remained after the rain, in units.
@@ -19,8 +20,9 @@ public class CoreImpl {
      *      the volume of water in units which remained after the rain
      *
      * Time Complexity: O(n)
-     * Space Complexity : O(1)
+     * Space Complexity: O(1)
      */
+    @Override
     public int fillWater(int[] arr) {
 
         int volume = 0;

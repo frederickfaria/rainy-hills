@@ -5,7 +5,7 @@
   <groupId>com.crxmarkets.test</groupId>
   <artifactId>com.crxmarkets.rainyhills</artifactId>
   <version>1.0</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <name>com.crxmarkets.rainyhills</name>
   <url>http://maven.apache.org</url>
