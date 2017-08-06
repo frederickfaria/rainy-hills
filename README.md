@@ -46,14 +46,19 @@ The solution was implemented with Java Platform Enterprise Edition (Java EE) API
 **MainServlet.java:** Main servlet that get the request of browser with the user input using method post.
 
 * Service:                      
+
 **CoreService.java:** Local interface for the ejb who contains the code to solve the problem. 
+
 **CoreServiceImpl.java:** EJB Stateless implementing CoreService as it local interface, overriding the method fillWater 
 
 * Descriptor:
+
 **web.xml:** Deployment Descriptor for the J2EE application. Contains the servlet and ejb definition.
 
 * JSP: 
+
 **index.jsp:** JSP file who contains the content to show in the browser. Implements Bootstrap 3.3.7
 
 * Test:
+
 **CoreServiceTest.java:** Unit test class for fillWater method of CoreServiceImpl.java
