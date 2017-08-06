@@ -44,7 +44,7 @@ The solution was implemented with Java Platform Enterprise Edition (Java EE) API
 
 **Servlet:**
 
-    MainServlet.java: Main servlet that get the request of browser with the user input using method post.
+    MainServlet.java: Gets the request of browser with the user input using method post and invokes que service using dependency injection.
 
 **EJB Service:**                      
 
@@ -66,7 +66,7 @@ The solution was implemented with Java Platform Enterprise Edition (Java EE) API
     
 # DEPLOYMENT:
 
-The project is including the scripts to compile the application with maven and docker image creation.
+The project is including the scripts to compile the application with maven and the docker image creation using JBoss Wildfly 10.1.0.Final.
 
 **To compile and create the image:**
 
