@@ -4,7 +4,7 @@
 
   <groupId>com.crxmarkets.test</groupId>
   <artifactId>com.crxmarkets.rainyhills</artifactId>
-  <version>1.1</version>
+  <version>1.2</version>
   <packaging>war</packaging>
 
   <name>com.crxmarkets.rainyhills</name>
@@ -44,6 +44,13 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
         </plugins>
